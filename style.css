@@ -1,0 +1,179 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: black;
+  color: white;
+
+  font-size: 1.2rem;
+}
+
+span {
+  color: rgb(0, 174, 255);
+}
+
+/* Text slider animation using Css */
+.container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Image circle animation for profile */
+.animate_img {
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.animate_img img {
+  width: 90%;
+  border-radius: 50%;
+  border: 0.2rem solid rgb(0, 174, 255);
+  aspect-ratio: 1/1;
+}
+
+.animate_img .circle-spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-top: 0.2rem solid black;
+  border-bottom: 0.2rem solid black;
+  border-left: 0.2rem solid rgb(0, 174, 255);
+  border-right: 0.2rem solid rgb(0, 174, 255);
+  animation: imgSpinner 8s linear infinite;
+}
+
+.container .text-animate {
+  position: relative;
+}
+.container .text-animate h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 0.7px rgb(0, 174, 255);
+  background-image: linear-gradient(rgb(0, 174, 255), rgb(0, 174, 255));
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-position: 0 0;
+  animation: homeBgText 6s linear infinite;
+  animation-delay: 2s;
+}
+
+.container .text-animate h3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-right: 2px solid rgb(0, 174, 255);
+  z-index: -1;
+  animation: homeCursorText 6s linear infinite;
+  animation-delay: 2s;
+}
+/* Button slider animation using Css */
+.btn-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: fit-content;
+  height: fit-content;
+}
+.btn-box .btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid rgb(0, 174, 255);
+  border-radius: 0.8rem;
+  width: 15rem;
+  height: 100%;
+  background-color: black;
+  padding: 0.5rem;
+  z-index: 1;
+  overflow: hidden;
+  color: rgb(0, 174, 255);
+}
+
+.btn-box .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: rgb(0, 174, 255);
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.btn-box .btn:hover {
+  color: black;
+}
+
+.btn-box .btn:hover::before {
+  width: 100%;
+}
+
+/* KEYFRAMES ANIMATION FOR Animate Text*/
+@keyframes homeBgText {
+  0%,
+  10%,
+  100% {
+    background-position: -36rem 0;
+  }
+  65%,
+  85% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes homeCursorText {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+
+  65%,
+  78%,
+  85% {
+    width: 100%;
+    opacity: 1;
+  }
+
+  75%,
+  81% {
+    opacity: 1;
+  }
+}
+
+/* KEYFRAMES FOR CIRCLE AROUND PROFILE */
+@keyframes imgSpinner {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
